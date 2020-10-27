@@ -35,6 +35,7 @@ Route::get('/orders', 'AdminOrdersController@index')->name('orders');
 Route::get('/order-view/{orderNumber}', 'AdminOrdersController@view');
 Route::get('/order-create', 'AdminOrdersController@create');
 Route::post('/order-store', 'AdminOrdersController@store');
+Route::get('/order-destroy/{id}', 'AdminOrdersController@destroy');
 Route::get('/order-ready/{orderNumber}', 'AdminOrdersController@orderReady');
 
 // Users

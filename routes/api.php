@@ -23,6 +23,8 @@ Route::post('/register', 'ApiController@register');
 
 Route::get('/products', 'ApiController@products');
 
+Route::get('/orders/{id}', 'ApiController@orders');
+
 Route::post('/order', 'ApiController@createOrder');
 
 Route::get('/notifications/{id}', 'ApiController@notifications');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use Auth;
-use App\User;
 use App\UserAndroid;
 use App\Product;
 use App\Notification;
@@ -73,7 +72,7 @@ class ApiController extends Controller
             $order->orderQty = $request1['orderQty'];
             $order->totalPrice = $request1['totalPrice'];
             $order->orderStatus = $request1['orderStatus'];
-            //$order->orderTime = $request1['orderTime'];
+            $order->orderTime = $request1['orderTime'];
             $order->save();
 
         }
@@ -82,6 +81,7 @@ class ApiController extends Controller
         $notification->userId = $userId;
         $notification->subject = "Order placed";
         $notification->message = "Order ".$orderNumber." has been placed. Thank you for your purchase";
+        $notification->orderNumber = $orderNumber;
         $notification->save();
 
         return response($order);

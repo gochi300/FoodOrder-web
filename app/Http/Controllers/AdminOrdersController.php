@@ -35,9 +35,11 @@ class AdminOrdersController extends Controller
 
     public function orderReady($orderNumber)
     {
-        $orders = Order::where('orderNumber', '=', $orderNumber)->first();
-        $orders->orderStatus = "ready";
-        $orders->update();
+        $orders = Order::where('orderNumber', '=', $orderNumber)->get();
+        foreach ($orders as $order){
+            $order->orderStatus = "ready";
+            $order->update();
+        }
 
         $notification = new Notification();
         $notification->userId = 1;
@@ -48,8 +50,9 @@ class AdminOrdersController extends Controller
         return redirect('/orders');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-
+        Order::destroy($id);
+        return redirect('/orders');
     }
 }

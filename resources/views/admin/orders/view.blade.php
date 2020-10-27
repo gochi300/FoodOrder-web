@@ -28,11 +28,15 @@ h3 {
         </div>
         @endforeach
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="{{ url('/order-ready/'.$order->orderNumber) }}" class="btn btn-lg btn-link float-right my-4">Ready</a>
+        @if ($order->orderStatus != "ready")
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ url('/order-ready/'.$order->orderNumber) }}" class="btn btn-lg btn-danger float-right my-4">Ready</a>
+                </div>
             </div>
-        </div>
+
+        @endif
+
         </div> 
     </div>
 </div>
